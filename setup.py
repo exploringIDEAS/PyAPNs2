@@ -4,10 +4,10 @@ from setuptools import setup
 
 setup(
     name='apns2',
-    version='0.7.1',
+    version='0.7.2',
     packages=['apns2'],
     install_requires=[
-        'hyper>=0.7',
+        'httpx>=0.13.0',
         'PyJWT>=1.4.0',
         'cryptography>=1.7.2',
     ],
