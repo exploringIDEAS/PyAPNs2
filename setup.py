@@ -8,8 +8,7 @@ setup(
     packages=['apns2'],
     install_requires=[
         'httpx>=0.13.0',
-        'PyJWT>=1.4.0',
-        'cryptography>=1.7.2',
+        'PyJWT>=1.4.0'
     ],
     extras_require={
         "tests": [
