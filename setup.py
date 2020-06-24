@@ -4,7 +4,7 @@ from setuptools import setup
 
 setup(
     name='apns2',
-    version='0.7.2',
+    version='0.7.3',
     packages=['apns2'],
     install_requires=[
         'httpx>=0.13.0',
