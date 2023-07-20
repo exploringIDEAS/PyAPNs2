@@ -241,17 +241,18 @@ class APNsClient(object):
         Establish a connection to APNs. If already connected, the function does nothing. If the
         connection fails, the function retries up to MAX_CONNECTION_RETRIES times.
         """
-        retries = 0
-        while retries < MAX_CONNECTION_RETRIES:
-            # noinspection PyBroadException
-            try:
-                self._connection.connect()
-                logger.info('Connected to APNs')
-                return
-            except Exception:  # pylint: disable=broad-except
-                # close the connnection, otherwise next connect() call would do nothing
-                self._connection.close()
-                retries += 1
-                logger.exception('Failed connecting to APNs (attempt %s of %s)', retries, MAX_CONNECTION_RETRIES)
+        pass
+        # retries = 0
+        # while retries < MAX_CONNECTION_RETRIES:
+        #     # noinspection PyBroadException
+        #     try:
+        #         self._connection.connect()
+        #         logger.info('Connected to APNs')
+        #         return
+        #     except Exception:  # pylint: disable=broad-except
+        #         # close the connnection, otherwise next connect() call would do nothing
+        #         self._connection.close()
+        #         retries += 1
+        #         logger.exception('Failed connecting to APNs (attempt %s of %s)', retries, MAX_CONNECTION_RETRIES)
 
-        raise ConnectionFailed()
+        # raise ConnectionFailed()
