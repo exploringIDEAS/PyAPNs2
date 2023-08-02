@@ -144,7 +144,7 @@ class APNsClient(object):
         response = self.__client.post('https://{}{}'.format(self.__server, url), headers=headers, data=json_payload)
         return response.status_code, response.text
 
-    def get_notification_result(self, status: int, reason: str) -> Union[str, Tuple[str, str]]:
+    def get_notification_result(self, status: int, resp_text: str) -> Union[str, Tuple[str, str]]:
         """
         Get result for specified stream
         The function returns: 'Success' or 'failure reason' or ('Unregistered', timestamp)
@@ -153,13 +153,8 @@ class APNsClient(object):
         if status == 200:
             return 'Success'
         else:
-            return reason
-            # raw_data = response.read().decode('utf-8')
-            # data = json.loads(raw_data)  # type: Dict[str, str]
-            # if response.status == 410:
-            #     return data['reason'], data['timestamp']
-            # else:
-            #     return data['reason']
+            data = json.loads(resp_text)  # type: Dict[str, str]
+            return data['reason']
 
     def send_notification_batch(self, notifications: Iterable[Notification], topic: Optional[str] = None,
                                 priority: NotificationPriority = NotificationPriority.Immediate,
